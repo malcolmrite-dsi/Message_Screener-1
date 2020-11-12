@@ -19,7 +19,7 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-
+from google_drive_downloader import GoogleDriveDownloader as gdd
 
 def preprocess_test(x_test):
   """ this function allows to preprocess the test sentence
@@ -129,10 +129,9 @@ def main():
             basic_emo_dict = {"0": ':rage:', "4": ":smile:"}
             
             with st.spinner('Predicting...'):
-                
-                pickle.load = partial(pickle.load, encoding="latin1")
-                pickle.Unpickler = partial(pickle.Unpickler, encoding="latin1")
-       
+                gdd.download_file_from_google_drive(file_id='1esU8LJsmVPbGAt-I7co48fDqTTwVVPqM',
+                                    dest_path='./final-model.pt',
+                                    unzip=True)
                 SentClassifier = TextClassifier.load('twitter_sentiment/model-saves/final-model.pt')
                 EmoteClassifier = TextClassifier.load('twitter_sentiment/model-saves/emotion-model.pt')
                 SentClassifier.predict(sentimentTweet)
