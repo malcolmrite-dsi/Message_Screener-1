@@ -125,7 +125,7 @@ def main():
             emote_dict = {'0': 'Anger', '1': 'Fear', '2': 'Joy', '3': 'Love', '4': 'Sadness', '5': 'Surprise'}
             emoji_dict = {'0': ':rage:', '1': ':fearful:', '2': ':joy:', '3': ':heart_eyes:', '4': ':cry:', '5': ':astonished:'}
             basic_emo_dict = {"0": ':rage:', "4": ":smile:"}
-           
+           with st.spinner("Weeeeeee......."):
                 SentClassifier = TextClassifier.load('twitter_sentiment/model-saves/final-model.pt')
                 EmoteClassifier = TextClassifier.load('twitter_sentiment/model-saves/emotion-model.pt')
                 SentClassifier.predict(sentimentTweet)
